@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ciciInfo:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="ciciInfo.war">
+      <element id="artifact" artifact-name="ciciInfo:war exploded" />
+    </root>
+  </artifact>
+</component>
