@@ -1,0 +1,17 @@
+table{
+    width:100%;
+    font-size: 15px;
+}
+
+.myinfo{
+    text-align: center;
+}
+
+.myinfo th{
+    text-align: center;
+
+}
+
+.msg{
+    margin:10px;
+}
