@@ -12,12 +12,13 @@
 
     <!--视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/static/"></property>
-        <property name="suffix" value=".html"></property>
+        <property name="prefix" value="/WEB-INF/jsp/"></property>
+        <property name="suffix" value=".jsp"></property>
     </bean>
-
+    
     <!--静态资源-->
     <mvc:resources mapping="/static/**" location="/WEB-INF/static/"/>
-    <mvc:resources mapping="/photo/**" location="/home/panyiwen/temp/photo/"/>
+    <mvc:resources mapping="/photo/**" location="/photo/"/>
+    <mvc:resources mapping="/**" location="/WEB-INF/static/"/>
 
 </beans>

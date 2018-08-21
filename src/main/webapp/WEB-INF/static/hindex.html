@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -13,12 +14,15 @@
     <script type="text/javascript" src="/static/js/login.js"></script>
     <script type="text/javascript" src="/static/js/jquery.cookie.js"></script>
     <script type="text/javascript" src="/static/js/md5.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.form.js"></script>
 
     <link rel="stylesheet" type="text/css" href="/static/css/prism.css">
     <link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
     <link rel="stylesheet" id="_bootstrap-css" href="/static/css/bootstrap.css" type="text/css" media="all">
     <link rel="stylesheet" id="_fontawesome-css" href="/static/css/font-awesome.css" type="text/css" media="all">
     <link rel="stylesheet" id="_main-css" href="/static/css/main.css" type="text/css" media="all">
+    <link rel="shortcut icon" href="/static/pic/favicon.ico">
+
 
 </head>
 
@@ -38,13 +42,13 @@
                 <a href="/static/http://www.moejam.com/news">资讯</a>
             </li>
             <li id="navbar-category-2">
-                <a href="/static/http://www.moejam.com/manzhan">漫展</a>
+                <a href="/static/http://www.moejam.com/manzhan">博客</a>
             </li>
             <li id="navbar-category-3">
-                <a href="/static/http://www.moejam.com/doujin">同人</a>
+                <a href="/static/http://www.moejam.com/doujin">资源</a>
             </li>
             <li id="navbar-category-4">
-                <a href="/static/http://www.moejam.com/goods">周边</a>
+                <a href="/static/http://www.moejam.com/goods">其他</a>
             </li>
         </ul>
         <span class="navto-search">
@@ -59,7 +63,7 @@
         <span class="usercc" id="userinfo" style="display: none;">
             <div class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <img src="/static/pic/0.png" class="img-circle" width="100%" height="100%"/>
+                    <img src="/photo/default.png" class="img-circle" id="user-photo" width="100%" height="100%"/>
                 </a>
                 <ul class="dropdown-menu">
                     <li><a href="#">用户信息</a></li>
@@ -75,8 +79,8 @@
 </header>
 <div class="site-search">
     <div class="container">
-        <form method="get" class="site-search-form" action="http://www.moejam.com/search.php?act=search">
-            <input class="search-input" name="q" placeholder="输入关键字" type="text">
+        <form method="get" class="site-search-form" action="/search" id="search">
+            <input class="search-input" name="word" placeholder="输入关键字" type="text">
             <button class="search-btn" type="submit">
                 <i class="fa fa-search"></i>
             </button>
@@ -154,330 +158,327 @@
                     </span>
                 </div>
             </div>
-        </div>
-
-
-        <script>
-            $(function () {
-                $('.slick').slick({
-                    dots: true, //显示项目导航
-                    fade: true, //淡入淡出
-                    autoplay: true //自动播放
+            <script>
+                $(function () {
+                    $('.slick').slick({
+                        dots: true, //显示项目导航
+                        fade: true, //淡入淡出
+                        autoplay: true //自动播放
+                    });
                 });
-            });
-        </script>
-        <div class="thumbs">
-            <div class="thumbtt">
-                <a href="/static/http://www.moejam.com/news/25696.html" class="img" target="_blank">
-                    <img alt="日本漫画《弟之夫》获得美国漫画艾斯纳奖最佳亚洲漫画奖" title="日本漫画《弟之夫》获得美国漫画艾斯纳奖最佳亚洲漫画奖"
-                         src="/static/pic/201807251532486091896035.jpg">
-                    <span class="bg"></span>
-                    <p class="title">日本漫画《弟之夫》获得美国漫画艾斯纳奖最佳亚洲漫画奖</p>
-                </a>
+            </script>
+            <div class="thumbs">
+                <div class="thumbtt">
+                    <a href="/static/http://www.moejam.com/news/25696.html" class="img" target="_blank">
+                        <img alt="日本漫画《弟之夫》获得美国漫画艾斯纳奖最佳亚洲漫画奖" title="日本漫画《弟之夫》获得美国漫画艾斯纳奖最佳亚洲漫画奖"
+                             src="/static/pic/201807251532486091896035.jpg">
+                        <span class="bg"></span>
+                        <p class="title">日本漫画《弟之夫》获得美国漫画艾斯纳奖最佳亚洲漫画奖</p>
+                    </a>
+                </div>
+                <div class="thumbtt">
+                    <a href="/static/http://www.moejam.com/news/25679.html" class="img" target="_blank">
+                        <img alt="《K 七个故事》系列剧场版动画第一部将被改编成漫画" title="《K 七个故事》系列剧场版动画第一部将被改编成漫画"
+                             src="/static/pic/201807231532316335101890.jpg">
+                        <span class="bg"></span>
+                        <p class="title">《K 七个故事》系列剧场版动画第一部将被改编成漫画</p>
+                    </a>
+                </div>
+                <div class="thumbtt">
+                    <a href="/static/http://www.moejam.com/news/25675.html" class="img" target="_blank">
+                        <img alt="《超时空要塞 Frontier》7年后首发单曲" title="《超时空要塞 Frontier》7年后首发单曲"
+                             src="/static/pic/201807231532312989852119.jpg">
+                        <span class="bg"></span>
+                        <p class="title">《超时空要塞 Frontier》7年后首发单曲</p>
+                    </a>
+                </div>
             </div>
-            <div class="thumbtt">
-                <a href="/static/http://www.moejam.com/news/25679.html" class="img" target="_blank">
-                    <img alt="《K 七个故事》系列剧场版动画第一部将被改编成漫画" title="《K 七个故事》系列剧场版动画第一部将被改编成漫画"
-                         src="/static/pic/201807231532316335101890.jpg">
-                    <span class="bg"></span>
-                    <p class="title">《K 七个故事》系列剧场版动画第一部将被改编成漫画</p>
-                </a>
-            </div>
-            <div class="thumbtt">
-                <a href="/static/http://www.moejam.com/news/25675.html" class="img" target="_blank">
-                    <img alt="《超时空要塞 Frontier》7年后首发单曲" title="《超时空要塞 Frontier》7年后首发单曲"
-                         src="/static/pic/201807231532312989852119.jpg">
-                    <span class="bg"></span>
-                    <p class="title">《超时空要塞 Frontier》7年后首发单曲</p>
-                </a>
+            <div class="clear"></div>
+            <article class="excerpt excerpt-1">
+                <div class="focus thumb">
+                    <a href="/static/http://www.moejam.com/news/25885.html" title="动画《只要别西卜大小姐喜欢就好》公开新视觉图&amp;角色介绍PV">
+                        <img src="/static/pic/201808161534414472563431.jpg">
+                    </a>
+                </div>
+                <header>
+                    <h2>
+                        <a target="_blank" href="/static/http://www.moejam.com/news/25885.html"
+                           title="动画《只要别西卜大小姐喜欢就好》公开新视觉图&amp;角色介绍PV">动画《只要别西卜大小姐喜欢就好》公开新视觉图&amp;角色介绍PV</a>
+                    </h2>
+                </header>
+                <p class="note">matoba原作的漫画《只要别西卜大小姐喜欢就好》即将改编为动画，由LIDENFILMS负责制作。官方日前公开了新视觉图和角色介绍PV。从天界堕落，成为恶魔的前...</p>
+                <p class="meta">
+                    <a href="/static/http://www.moejam.com/news" rel="category">资讯</a>
+                    <time></time>
+                    <span class="pvs">|</span>
+                    <span class="author">菜菜</span>
+                    <time>2018-08-16</time>
+                    <span class="pv">阅读(1539)</span>
+                    <span class="pvtags"></span>
+                </p>
+            </article>
+            <article class="excerpt excerpt-2">
+                <div class="focus thumb">
+                    <a href="/static/http://www.moejam.com/news/25884.html" title="动画《一拳超人》第二季将于2019年春季播出">
+                        <img src="/static/pic/201808161534413232810781.jpg">
+                    </a>
+                </div>
+                <header>
+                    <h2>
+                        <a target="_blank" href="/static/http://www.moejam.com/news/25884.html"
+                           title="动画《一拳超人》第二季将于2019年春季播出">动画《一拳超人》第二季将于2019年春季播出</a>
+                    </h2>
+                </header>
+                <p class="note">ONE原作、村田雄介负责绘画的漫画《一拳超人》，其改编动画即将制作第二季，故事将会进入饿狼篇。官方日前公开主视觉图、特报影像。动画预计在2019年4月播出。故事...</p>
+                <p class="meta">
+                    <a href="/static/http://www.moejam.com/news" rel="category">资讯</a>
+                    <time></time>
+                    <span class="pvs">|</span>
+                    <span class="author">菜菜</span>
+                    <time>2018-08-16</time>
+                    <span class="pv">阅读(1579)</span>
+                    <span class="pvtags"></span>
+                </p>
+            </article>
+            <article class="excerpt excerpt-3">
+                <div class="focus thumb">
+                    <a href="/static/http://www.moejam.com/news/25883.html" title="游戏《甲铁城的卡巴内利 -乱- 起始的轨跡》将于9月发售">
+                        <img src="/static/pic/201808161534409317231711.jpg">
+                    </a>
+                </div>
+                <header>
+                    <h2>
+                        <a target="_blank" href="/static/http://www.moejam.com/news/25883.html"
+                           title="游戏《甲铁城的卡巴内利 -乱- 起始的轨跡》将于9月发售">游戏《甲铁城的卡巴内利 -乱- 起始的轨跡》将于9月发售</a>
+                    </h2>
+                </header>
+                <p class="note">WIT STUDIO制作的原创动画《甲铁城的卡巴内利》即将推出游戏《甲铁城的卡巴内利 -乱- 起始的轨跡》。官方表示游戏故事内容将为正统续篇，与动画本篇和剧场版...</p>
+                <p class="meta">
+                    <a href="/static/http://www.moejam.com/news" rel="category">资讯</a>
+                    <time></time>
+                    <span class="pvs">|</span>
+                    <span class="author">菜菜</span>
+                    <time>2018-08-16</time>
+                    <span class="pv">阅读(1674)</span>
+                    <span class="pvtags"></span>
+                </p>
+            </article>
+            <article class="excerpt excerpt-4">
+                <div class="focus thumb">
+                    <a href="/static/http://www.moejam.com/news/25882.html" title="车田正美漫画《男坂》将进入新篇章">
+                        <img src="/static/pic/201808161534390655898654.jpg">
+                    </a>
+                </div>
+                <header>
+                    <h2>
+                        <a target="_blank" href="/static/http://www.moejam.com/news/25882.html"
+                           title="车田正美漫画《男坂》将进入新篇章">车田正美漫画《男坂》将进入新篇章</a>
+                    </h2>
+                </header>
+                <p class="note">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 周二，漫画家车田正美的官方网站宣布，车田正美的漫画《男坂》将从8月18日起进入新篇章《天下泰平編》...</p>
+                <p class="meta">
+                    <a href="/static/http://www.moejam.com/news" rel="category">资讯</a>
+                    <time></time>
+                    <span class="pvs">|</span>
+                    <span class="author">musquall</span>
+                    <time>2018-08-16</time>
+                    <span class="pv">阅读(2270)</span>
+                    <span class="pvtags"></span>
+                </p>
+            </article>
+            <article class="excerpt excerpt-5">
+                <div class="focus thumb">
+                    <a href="/static/http://www.moejam.com/news/25881.html" title="剧场版动画《我想吃掉你的胰脏》观影特典、主创致敬情报公开">
+                        <img src="/static/pic/201808161534389138153258.jpg">
+                    </a>
+                </div>
+                <header>
+                    <h2>
+                        <a target="_blank" href="/static/http://www.moejam.com/news/25881.html"
+                           title="剧场版动画《我想吃掉你的胰脏》观影特典、主创致敬情报公开">剧场版动画《我想吃掉你的胰脏》观影特典、主创致敬情报公开</a>
+                    </h2>
+                </header>
+                <p class="note">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 周二，剧场版动画《我想吃掉你的胰脏（日语：君の膵臓をたべたい）》官方网站公布了剧场版动画的观影特典...</p>
+                <p class="meta">
+                    <a href="/static/http://www.moejam.com/news" rel="category">资讯</a>
+                    <time></time>
+                    <span class="pvs">|</span>
+                    <span class="author">musquall</span>
+                    <time>2018-08-16</time>
+                    <span class="pv">阅读(2227)</span>
+                    <span class="pvtags"></span>
+                </p>
+            </article>
+            <article class="excerpt excerpt-6">
+                <div class="focus thumb">
+                    <a href="/static/http://www.moejam.com/news/25880.html" title="真人电影《银魂2》冈田将生“桂”新剧照公开">
+                        <img src="/static/pic/201808161534388278492349.jpg">
+                    </a>
+                </div>
+                <header>
+                    <h2>
+                        <a target="_blank" href="/static/http://www.moejam.com/news/25880.html"
+                           title="真人电影《银魂2》冈田将生“桂”新剧照公开">真人电影《银魂2》冈田将生“桂”新剧照公开</a>
+                    </h2>
+                    <i class="public-icon-first">银魂2</i>&nbsp;
+                    <i class="public-icon-first">真人版</i>&nbsp;
+                    <i class="public-icon-first">冈田将生</i>&nbsp;
+                </header>
+                <p class="note">　　空知英秋原作改编的真人电影《银魂2 规定就是为了被打破而存在的》中，冈田将生饰演的桂小太郎剧照公开。&nbsp;　　《银魂2 规定就是为了被打破而存在的》将...</p>
+                <p class="meta">
+                    <a href="/static/http://www.moejam.com/news" rel="category">资讯</a>
+                    <time></time>
+                    <span class="pvs">|</span>
+                    <span class="author">十月轻舞</span>
+                    <time>2018-08-16</time>
+                    <span class="pv">阅读(2337)</span>
+                    <span class="pvtags"></span>
+                </p>
+            </article>
+            <article class="excerpt excerpt-7">
+                <div class="focus thumb">
+                    <a href="/static/http://www.moejam.com/news/25879.html" title="《恋爱的白熊》新角色及视觉图公开">
+                        <img src="/static/pic/201808161534387298635143.jpg">
+                    </a>
+                </div>
+                <header>
+                    <h2>
+                        <a target="_blank" href="/static/http://www.moejam.com/news/25879.html"
+                           title="《恋爱的白熊》新角色及视觉图公开">《恋爱的白熊》新角色及视觉图公开</a>
+                    </h2>
+                    <i class="public-icon-first">恋爱的白熊</i>&nbsp;
+                    <i class="public-icon-first">视觉图</i>&nbsp;
+                </header>
+                <p class="note">　　根据日本漫画家“衣”在月刊《COMIC GENE》上连载的漫画《恋爱的白熊》改编的动画公开最新主视觉图。　　《恋爱的白熊》故事讲述在纯白的北极雪原，一只大白...</p>
+                <p class="meta">
+                    <a href="/static/http://www.moejam.com/news" rel="category">资讯</a>
+                    <time></time>
+                    <span class="pvs">|</span>
+                    <span class="author">十月轻舞</span>
+                    <time>2018-08-16</time>
+                    <span class="pv">阅读(1688)</span>
+                    <span class="pvtags"></span>
+                </p>
+            </article>
+            <article class="excerpt excerpt-8">
+                <div class="focus thumb">
+                    <a href="/static/http://www.moejam.com/news/25878.html" title="动画《寄宿学校的茱丽叶》追加声优公布，杉田智和加盟">
+                        <img src="/static/pic/201808141534215635635563.png">
+                    </a>
+                </div>
+                <header>
+                    <h2>
+                        <a target="_blank" href="/static/http://www.moejam.com/news/25878.html"
+                           title="动画《寄宿学校的茱丽叶》追加声优公布，杉田智和加盟">动画《寄宿学校的茱丽叶》追加声优公布，杉田智和加盟</a>
+                    </h2>
+                </header>
+                <p class="note">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 周三，TV版动画《寄宿学校的茱丽叶》在其官方网站宣布，杉田智和将加盟动画，他将为黑犬公寓高一学生丸...</p>
+                <p class="meta">
+                    <a href="/static/http://www.moejam.com/news" rel="category">资讯</a>
+                    <time></time>
+                    <span class="pvs">|</span>
+                    <span class="author">musquall</span>
+                    <time>2018-08-16</time>
+                    <span class="pv">阅读(1620)</span>
+                    <span class="pvtags"></span>
+                </p>
+            </article>
+            <article class="excerpt excerpt-9">
+                <div class="focus thumb">
+                    <a href="/static/http://www.moejam.com/news/25877.html" title="《松本零士的世界展》8月底开展">
+                        <img src="/static/pic/201808161534386462368939.jpg">
+                    </a>
+                </div>
+                <header>
+                    <h2>
+                        <a target="_blank" href="/static/http://www.moejam.com/news/25877.html" title="《松本零士的世界展》8月底开展">《松本零士的世界展》8月底开展</a>
+                    </h2>
+                    <i class="public-icon-first">松本零士</i>&nbsp;
+                </header>
+                <p class="note">&nbsp;　　《松本零士的世界展》将于8月28日至9月4日在东京大丸东京店11楼活动厅举行。　　此次展会为纪念松本零士诞辰80周年举行，将展示并出售松本老师亲...</p>
+                <p class="meta">
+                    <a href="/static/http://www.moejam.com/news" rel="category">资讯</a>
+                    <time></time>
+                    <span class="pvs">|</span>
+                    <span class="author">十月轻舞</span>
+                    <time>2018-08-16</time>
+                    <span class="pv">阅读(1535)</span>
+                    <span class="pvtags"></span>
+                </p>
+            </article>
+            <article class="excerpt excerpt-10">
+                <div class="focus thumb">
+                    <a href="/static/http://www.moejam.com/news/25876.html" title="《gangoose》真人电影 11月23日上映">
+                        <img src="/static/pic/201808161534384454264513.jpg">
+                    </a>
+                </div>
+                <header>
+                    <h2>
+                        <a target="_blank" href="/static/http://www.moejam.com/news/25876.html"
+                           title="《gangoose》真人电影 11月23日上映">《gangoose》真人电影 11月23日上映</a>
+                    </h2>
+                    <i class="public-icon-first">gangoose</i>&nbsp;
+                    <i class="public-icon-first">真人</i>&nbsp;
+                    <i class="public-icon-first">剧照</i>&nbsp;
+                </header>
+                <p class="note">　　根据日本肥谷圭介・铃木大介原作改编导热真人电影《gangoose》将于11月23日上映，新剧照公开。　　《gangoose》（日文「ギャングース」）是日本漫...</p>
+                <p class="meta">
+                    <a href="/static/http://www.moejam.com/news" rel="category">资讯</a>
+                    <time></time>
+                    <span class="pvs">|</span>
+                    <span class="author">十月轻舞</span>
+                    <time>2018-08-16</time>
+                    <span class="pv">阅读(1357)</span>
+                    <span class="pvtags"></span>
+                </p>
+            </article>
+            <div class="pagination">
+                <ul>
+                    <li>
+                        <a href="/static/http://www.moejam.com/">‹‹</a>
+                    </li>
+                    <li class="active">
+                        <span>1</span>
+                    </li>
+                    <li>
+                        <a href="/static/http://www.moejam.com/page_2.html">2</a>
+                    </li>
+                    <li>
+                        <a href="/static/http://www.moejam.com/page_3.html">3</a>
+                    </li>
+                    <li>
+                        <a href="/static/http://www.moejam.com/page_4.html">4</a>
+                    </li>
+                    <li>
+                        <a href="/static/http://www.moejam.com/page_5.html">5</a>
+                    </li>
+                    <li>
+                        <a href="/static/http://www.moejam.com/page_6.html">6</a>
+                    </li>
+                    <li>
+                        <a href="/static/http://www.moejam.com/page_7.html">7</a>
+                    </li>
+                    <li>
+                        <a href="/static/http://www.moejam.com/page_8.html">8</a>
+                    </li>
+                    <li>
+                        <a href="/static/http://www.moejam.com/page_9.html">9</a>
+                    </li>
+                    <li>
+                        <a href="/static/http://www.moejam.com/page_10.html">10</a>
+                    </li>
+                    <li class="next-page">
+                        <a href="/static/http://www.moejam.com/page_2.html">下一页</a>
+                    </li>
+                    <li>
+                        <a href="/static/http://www.moejam.com/page_2233.html">››</a>
+                    </li>
+                    <li>
+                        <span>共 2233 页</span>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="clear"></div>
-        <article class="excerpt excerpt-1">
-            <div class="focus thumb">
-                <a href="/static/http://www.moejam.com/news/25885.html" title="动画《只要别西卜大小姐喜欢就好》公开新视觉图&amp;角色介绍PV">
-                    <img src="/static/pic/201808161534414472563431.jpg">
-                </a>
-            </div>
-            <header>
-                <h2>
-                    <a target="_blank" href="/static/http://www.moejam.com/news/25885.html"
-                       title="动画《只要别西卜大小姐喜欢就好》公开新视觉图&amp;角色介绍PV">动画《只要别西卜大小姐喜欢就好》公开新视觉图&amp;角色介绍PV</a>
-                </h2>
-            </header>
-            <p class="note">matoba原作的漫画《只要别西卜大小姐喜欢就好》即将改编为动画，由LIDENFILMS负责制作。官方日前公开了新视觉图和角色介绍PV。从天界堕落，成为恶魔的前...</p>
-            <p class="meta">
-                <a href="/static/http://www.moejam.com/news" rel="category">资讯</a>
-                <time></time>
-                <span class="pvs">|</span>
-                <span class="author">菜菜</span>
-                <time>2018-08-16</time>
-                <span class="pv">阅读(1539)</span>
-                <span class="pvtags"></span>
-            </p>
-        </article>
-        <article class="excerpt excerpt-2">
-            <div class="focus thumb">
-                <a href="/static/http://www.moejam.com/news/25884.html" title="动画《一拳超人》第二季将于2019年春季播出">
-                    <img src="/static/pic/201808161534413232810781.jpg">
-                </a>
-            </div>
-            <header>
-                <h2>
-                    <a target="_blank" href="/static/http://www.moejam.com/news/25884.html"
-                       title="动画《一拳超人》第二季将于2019年春季播出">动画《一拳超人》第二季将于2019年春季播出</a>
-                </h2>
-            </header>
-            <p class="note">ONE原作、村田雄介负责绘画的漫画《一拳超人》，其改编动画即将制作第二季，故事将会进入饿狼篇。官方日前公开主视觉图、特报影像。动画预计在2019年4月播出。故事...</p>
-            <p class="meta">
-                <a href="/static/http://www.moejam.com/news" rel="category">资讯</a>
-                <time></time>
-                <span class="pvs">|</span>
-                <span class="author">菜菜</span>
-                <time>2018-08-16</time>
-                <span class="pv">阅读(1579)</span>
-                <span class="pvtags"></span>
-            </p>
-        </article>
-        <article class="excerpt excerpt-3">
-            <div class="focus thumb">
-                <a href="/static/http://www.moejam.com/news/25883.html" title="游戏《甲铁城的卡巴内利 -乱- 起始的轨跡》将于9月发售">
-                    <img src="/static/pic/201808161534409317231711.jpg">
-                </a>
-            </div>
-            <header>
-                <h2>
-                    <a target="_blank" href="/static/http://www.moejam.com/news/25883.html"
-                       title="游戏《甲铁城的卡巴内利 -乱- 起始的轨跡》将于9月发售">游戏《甲铁城的卡巴内利 -乱- 起始的轨跡》将于9月发售</a>
-                </h2>
-            </header>
-            <p class="note">WIT STUDIO制作的原创动画《甲铁城的卡巴内利》即将推出游戏《甲铁城的卡巴内利 -乱- 起始的轨跡》。官方表示游戏故事内容将为正统续篇，与动画本篇和剧场版...</p>
-            <p class="meta">
-                <a href="/static/http://www.moejam.com/news" rel="category">资讯</a>
-                <time></time>
-                <span class="pvs">|</span>
-                <span class="author">菜菜</span>
-                <time>2018-08-16</time>
-                <span class="pv">阅读(1674)</span>
-                <span class="pvtags"></span>
-            </p>
-        </article>
-        <article class="excerpt excerpt-4">
-            <div class="focus thumb">
-                <a href="/static/http://www.moejam.com/news/25882.html" title="车田正美漫画《男坂》将进入新篇章">
-                    <img src="/static/pic/201808161534390655898654.jpg">
-                </a>
-            </div>
-            <header>
-                <h2>
-                    <a target="_blank" href="/static/http://www.moejam.com/news/25882.html"
-                       title="车田正美漫画《男坂》将进入新篇章">车田正美漫画《男坂》将进入新篇章</a>
-                </h2>
-            </header>
-            <p class="note">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 周二，漫画家车田正美的官方网站宣布，车田正美的漫画《男坂》将从8月18日起进入新篇章《天下泰平編》...</p>
-            <p class="meta">
-                <a href="/static/http://www.moejam.com/news" rel="category">资讯</a>
-                <time></time>
-                <span class="pvs">|</span>
-                <span class="author">musquall</span>
-                <time>2018-08-16</time>
-                <span class="pv">阅读(2270)</span>
-                <span class="pvtags"></span>
-            </p>
-        </article>
-        <article class="excerpt excerpt-5">
-            <div class="focus thumb">
-                <a href="/static/http://www.moejam.com/news/25881.html" title="剧场版动画《我想吃掉你的胰脏》观影特典、主创致敬情报公开">
-                    <img src="/static/pic/201808161534389138153258.jpg">
-                </a>
-            </div>
-            <header>
-                <h2>
-                    <a target="_blank" href="/static/http://www.moejam.com/news/25881.html"
-                       title="剧场版动画《我想吃掉你的胰脏》观影特典、主创致敬情报公开">剧场版动画《我想吃掉你的胰脏》观影特典、主创致敬情报公开</a>
-                </h2>
-            </header>
-            <p class="note">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 周二，剧场版动画《我想吃掉你的胰脏（日语：君の膵臓をたべたい）》官方网站公布了剧场版动画的观影特典...</p>
-            <p class="meta">
-                <a href="/static/http://www.moejam.com/news" rel="category">资讯</a>
-                <time></time>
-                <span class="pvs">|</span>
-                <span class="author">musquall</span>
-                <time>2018-08-16</time>
-                <span class="pv">阅读(2227)</span>
-                <span class="pvtags"></span>
-            </p>
-        </article>
-        <article class="excerpt excerpt-6">
-            <div class="focus thumb">
-                <a href="/static/http://www.moejam.com/news/25880.html" title="真人电影《银魂2》冈田将生“桂”新剧照公开">
-                    <img src="/static/pic/201808161534388278492349.jpg">
-                </a>
-            </div>
-            <header>
-                <h2>
-                    <a target="_blank" href="/static/http://www.moejam.com/news/25880.html"
-                       title="真人电影《银魂2》冈田将生“桂”新剧照公开">真人电影《银魂2》冈田将生“桂”新剧照公开</a>
-                </h2>
-                <i class="public-icon-first">银魂2</i>&nbsp;
-                <i class="public-icon-first">真人版</i>&nbsp;
-                <i class="public-icon-first">冈田将生</i>&nbsp;
-            </header>
-            <p class="note">　　空知英秋原作改编的真人电影《银魂2 规定就是为了被打破而存在的》中，冈田将生饰演的桂小太郎剧照公开。&nbsp;　　《银魂2 规定就是为了被打破而存在的》将...</p>
-            <p class="meta">
-                <a href="/static/http://www.moejam.com/news" rel="category">资讯</a>
-                <time></time>
-                <span class="pvs">|</span>
-                <span class="author">十月轻舞</span>
-                <time>2018-08-16</time>
-                <span class="pv">阅读(2337)</span>
-                <span class="pvtags"></span>
-            </p>
-        </article>
-        <article class="excerpt excerpt-7">
-            <div class="focus thumb">
-                <a href="/static/http://www.moejam.com/news/25879.html" title="《恋爱的白熊》新角色及视觉图公开">
-                    <img src="/static/pic/201808161534387298635143.jpg">
-                </a>
-            </div>
-            <header>
-                <h2>
-                    <a target="_blank" href="/static/http://www.moejam.com/news/25879.html"
-                       title="《恋爱的白熊》新角色及视觉图公开">《恋爱的白熊》新角色及视觉图公开</a>
-                </h2>
-                <i class="public-icon-first">恋爱的白熊</i>&nbsp;
-                <i class="public-icon-first">视觉图</i>&nbsp;
-            </header>
-            <p class="note">　　根据日本漫画家“衣”在月刊《COMIC GENE》上连载的漫画《恋爱的白熊》改编的动画公开最新主视觉图。　　《恋爱的白熊》故事讲述在纯白的北极雪原，一只大白...</p>
-            <p class="meta">
-                <a href="/static/http://www.moejam.com/news" rel="category">资讯</a>
-                <time></time>
-                <span class="pvs">|</span>
-                <span class="author">十月轻舞</span>
-                <time>2018-08-16</time>
-                <span class="pv">阅读(1688)</span>
-                <span class="pvtags"></span>
-            </p>
-        </article>
-        <article class="excerpt excerpt-8">
-            <div class="focus thumb">
-                <a href="/static/http://www.moejam.com/news/25878.html" title="动画《寄宿学校的茱丽叶》追加声优公布，杉田智和加盟">
-                    <img src="/static/pic/201808141534215635635563.png">
-                </a>
-            </div>
-            <header>
-                <h2>
-                    <a target="_blank" href="/static/http://www.moejam.com/news/25878.html"
-                       title="动画《寄宿学校的茱丽叶》追加声优公布，杉田智和加盟">动画《寄宿学校的茱丽叶》追加声优公布，杉田智和加盟</a>
-                </h2>
-            </header>
-            <p class="note">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 周三，TV版动画《寄宿学校的茱丽叶》在其官方网站宣布，杉田智和将加盟动画，他将为黑犬公寓高一学生丸...</p>
-            <p class="meta">
-                <a href="/static/http://www.moejam.com/news" rel="category">资讯</a>
-                <time></time>
-                <span class="pvs">|</span>
-                <span class="author">musquall</span>
-                <time>2018-08-16</time>
-                <span class="pv">阅读(1620)</span>
-                <span class="pvtags"></span>
-            </p>
-        </article>
-        <article class="excerpt excerpt-9">
-            <div class="focus thumb">
-                <a href="/static/http://www.moejam.com/news/25877.html" title="《松本零士的世界展》8月底开展">
-                    <img src="/static/pic/201808161534386462368939.jpg">
-                </a>
-            </div>
-            <header>
-                <h2>
-                    <a target="_blank" href="/static/http://www.moejam.com/news/25877.html" title="《松本零士的世界展》8月底开展">《松本零士的世界展》8月底开展</a>
-                </h2>
-                <i class="public-icon-first">松本零士</i>&nbsp;
-            </header>
-            <p class="note">&nbsp;　　《松本零士的世界展》将于8月28日至9月4日在东京大丸东京店11楼活动厅举行。　　此次展会为纪念松本零士诞辰80周年举行，将展示并出售松本老师亲...</p>
-            <p class="meta">
-                <a href="/static/http://www.moejam.com/news" rel="category">资讯</a>
-                <time></time>
-                <span class="pvs">|</span>
-                <span class="author">十月轻舞</span>
-                <time>2018-08-16</time>
-                <span class="pv">阅读(1535)</span>
-                <span class="pvtags"></span>
-            </p>
-        </article>
-        <article class="excerpt excerpt-10">
-            <div class="focus thumb">
-                <a href="/static/http://www.moejam.com/news/25876.html" title="《gangoose》真人电影 11月23日上映">
-                    <img src="/static/pic/201808161534384454264513.jpg">
-                </a>
-            </div>
-            <header>
-                <h2>
-                    <a target="_blank" href="/static/http://www.moejam.com/news/25876.html"
-                       title="《gangoose》真人电影 11月23日上映">《gangoose》真人电影 11月23日上映</a>
-                </h2>
-                <i class="public-icon-first">gangoose</i>&nbsp;
-                <i class="public-icon-first">真人</i>&nbsp;
-                <i class="public-icon-first">剧照</i>&nbsp;
-            </header>
-            <p class="note">　　根据日本肥谷圭介・铃木大介原作改编导热真人电影《gangoose》将于11月23日上映，新剧照公开。　　《gangoose》（日文「ギャングース」）是日本漫...</p>
-            <p class="meta">
-                <a href="/static/http://www.moejam.com/news" rel="category">资讯</a>
-                <time></time>
-                <span class="pvs">|</span>
-                <span class="author">十月轻舞</span>
-                <time>2018-08-16</time>
-                <span class="pv">阅读(1357)</span>
-                <span class="pvtags"></span>
-            </p>
-        </article>
-        <div class="pagination">
-            <ul>
-                <li>
-                    <a href="/static/http://www.moejam.com/">‹‹</a>
-                </li>
-                <li class="active">
-                    <span>1</span>
-                </li>
-                <li>
-                    <a href="/static/http://www.moejam.com/page_2.html">2</a>
-                </li>
-                <li>
-                    <a href="/static/http://www.moejam.com/page_3.html">3</a>
-                </li>
-                <li>
-                    <a href="/static/http://www.moejam.com/page_4.html">4</a>
-                </li>
-                <li>
-                    <a href="/static/http://www.moejam.com/page_5.html">5</a>
-                </li>
-                <li>
-                    <a href="/static/http://www.moejam.com/page_6.html">6</a>
-                </li>
-                <li>
-                    <a href="/static/http://www.moejam.com/page_7.html">7</a>
-                </li>
-                <li>
-                    <a href="/static/http://www.moejam.com/page_8.html">8</a>
-                </li>
-                <li>
-                    <a href="/static/http://www.moejam.com/page_9.html">9</a>
-                </li>
-                <li>
-                    <a href="/static/http://www.moejam.com/page_10.html">10</a>
-                </li>
-                <li class="next-page">
-                    <a href="/static/http://www.moejam.com/page_2.html">下一页</a>
-                </li>
-                <li>
-                    <a href="/static/http://www.moejam.com/page_2233.html">››</a>
-                </li>
-                <li>
-                    <span>共 2233 页</span>
-                </li>
-            </ul>
-        </div>
-    </div>
     </div>
     <aside class="sidebar">
         <div class="recommend">
@@ -1076,9 +1077,9 @@
             </h3>
             <form action="#" id="login_form">
                 <div class="logininput">
-                    <input type="text" id="username" name="username" class="loginusername" value=""
+                    <input type="text" id="username" name="username" required class="loginusername" value=""
                            placeholder="邮箱/用户名"/>
-                    <input type="password" id="password" class="loginuserpasswordt" value="" placeholder="密码"/>
+                    <input type="password" id="password" class="loginuserpasswordt" required value="" placeholder="密码"/>
                     <input type="password" name="password" class="loginuserpasswordp" style="display:none"/>
                 </div>
                 <div class="loginbtn">
@@ -1114,6 +1115,49 @@
 
 </div>
 <!--loginalert end-->
+
+<!--注册-->
+<div id="reg_setp">
+    <div class="back_setp">返回</div>
+    <div class="blogo"></div>
+    <div id="setp_quicklogin">
+        <div>
+            <div class="loginwrap">
+                <div class="loginh">
+                    <div class="fl">用户注册</div>
+                </div>
+                <h3>
+                    <span class="fl">请填写完整</span>
+                    <span class="login_warning" id="errmsg2" style="display: none;">用户名或密码错误</span>
+                    <div class="clear"></div>
+                </h3>
+                <form action="/register" method="post" id="reg-form">
+                    <div class="logininput">
+                        <input type="text" id="uid" name="userLogin" class="loginusername" value="" required placeholder="用户名"/>
+                        <input type="text" id="nickname" name="userNicename" class="loginusername" value="" required placeholder="昵称"/>
+                        <input type="email" id="email" name="userEmail" class="loginusername" value="" required placeholder="邮箱"/>
+                        <input type="password" id="password1" name="loginusername" required class="loginusername" value="" placeholder="密码"/>
+                        <input type="password" id="password2" class="loginuserpasswordt" required value="" placeholder="确认密码"/>
+                        <input type="password" id="rpasswd" name="userPass" style="display:none;"/>
+                    </div>
+                    <div class="loginbtn">
+                        <div class="loginsubmit fl">
+                            <input class="btn btn-success" type="submit" id="register" style="line-height: 0;" value="注册"/>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!--<h3>您可以选择以下第三方帐号直接登录，一分钟完成注册</h3>-->
+        <!--<ul class="quicklogin_socical">-->
+        <!--<li class="quicklogin_socical_weibo"><a href="/">微博帐号注册</a></li>-->
+        <!--<li class="quicklogin_socical_qq" style="margin:0;"><a href="/">QQ帐号注册</a></li>-->
+        <!--</ul>-->
+    </div>
+</div><!--reg_setp end-->
+
 
 </body>
 

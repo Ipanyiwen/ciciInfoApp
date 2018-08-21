@@ -43,6 +43,17 @@ public class IndexController {
         return mv;
     }
 
+    @RequestMapping("/register")
+    public ModelAndView register(Users user){
+        ModelAndView mv = new ModelAndView();
+        System.out.println(user);
+        mv.setView(new FastJsonJsonView());
+        mv.addObject("msg", "注册成功");
+        return mv;
+    }
+
+
+
 
 
     @RequestMapping("/index")

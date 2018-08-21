@@ -9,8 +9,10 @@
     <script src="js/jquery-2.js" type="text/javascript"></script>
     <script src="js/zblogphp.js" type="text/javascript"></script>
     <script src="js/prism.js" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="css/prism.css">
+    <script src="tagsinput/bootstrap-tagsinput.js" type="text/javascript"></script>
 
+    <link rel="stylesheet" type="text/css" href="css/prism.css">
+    <link rel="stylesheet" type="text/css" href="tagsinput/bootstrap-tagsinput.css" />
     <link rel="stylesheet" id="_bootstrap-css" href="css/bootstrap.css" type="text/css" media="all">
     <link rel="stylesheet" id="_fontawesome-css" href="css/font-awesome.css" type="text/css" media="all">
     <link rel="stylesheet" id="_main-css" href="css/main.css" type="text/css" media="all">
@@ -139,10 +141,14 @@
                     <div class="comments">
                         <div class="title" style="margin-bottom:30px; margin-top:20px;">
                             <span>标签
-                                <input type="text" class="form-control" placeholder="多个标签逗号隔开">
+                                <input id="tags" type="text" class="form-control" placeholder="enter键确定">
                             </span>
 
-
+                            <script>
+                                $(function () {
+                                    $("#tags").tagsinput();
+                                })
+                            </script>
                         </div>
                     </div>
 

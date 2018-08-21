@@ -1,7 +1,7 @@
 @charset "utf-8";
 *{margin:0;padding:0;list-style-type:none;}
 a,img{border:0;}
-a{text-decoration:none;color:#535353;font-size:12px;font-family:"arial","微软雅黑";}
+a{text-decoration:none;color:#535353;font-size:16px;font-family:"arial","微软雅黑";}
 body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 .fl{float:left;}
 .fr{float:right;}
@@ -43,7 +43,7 @@ body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
 #reg_setp{position:fixed;width:100%;height:100%;background:#fff;z-index:999;top:0;left:100%;display:none;}
 *html #reg_setp{position:absolute;top:expression(eval(document.documentElement.scrollTop));}
 #reg_setp h3{font-size:14px;font-weight:500;overflow:hidden;height:80px;line-height:90px;}
-#setp_quicklogin{width:400px;height:210px;position:absolute;left:50%;margin-left:-200px;top:230px;text-align:center;display:none;}
+#setp_quicklogin{width:400px;height:210px;position:absolute;left:50%;margin-left:-200px;top:80px;text-align:center;display:none;}
 .blogo{width:150px;height:180px;position:absolute;top:50px;left:50%;margin-left:-75px;}
 .quicklogin_socical li{float:left;margin:0 20px 0 0;display:inline;width:186px;height:46px;overflow:hidden;}
 .quicklogin_socical li a{display:block;line-height:46px;color:#fff;text-align:left;text-indent:68px;font-size:16px;}

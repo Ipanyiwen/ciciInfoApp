@@ -39,10 +39,26 @@ $(document).ready(function () {
         $("#password").val("****************");
     }
 
+    $("#reg-form").ajaxForm(function (data) {
+        alert(data['msg']);
+        window.location.href="index";
+    });
+    
+    $("#reg-form").submit(function () {
+        if(!checkPassword())
+            return false;
+        else{
+            var passwd = $.md5($.md5($("#password1").val()));
+            $("#rpasswd").val(passwd);
+            return true;
+        }
+    })
+
 
     $('#login').click(function (e) {
 
-
+        if($("#password").val() == "" || $("#username").val() == "")
+            return;
         if ($("#password").val() == "****************") {
             $("#password").val($.cookie("passWord"));
             if ($("#rmbUser").prop("checked") == false) {
@@ -74,6 +90,8 @@ $(document).ready(function () {
 
                     $("#plogin").hide();
                     $("#userinfo").show();
+
+                    $("#user-photo").src=data["user"]["pic"];
                     //alert(data["user"]["userLogin"]);
                 }else{
                     $('#errmsg').show();
@@ -91,24 +109,18 @@ $(document).ready(function () {
 });
 
 
-//校验成功函数
-function success(Obj, counter) {
-    Obj.parent().parent().removeClass('has-error').addClass('has-success');
-    $('.tips').eq(counter).hide();
-    $('.glyphicon-ok').eq(counter).show();
-    $('.glyphicon-remove').eq(counter).hide();
-    check[counter] = true;
 
+function checkPassword(){
+    var p1 = $("#password1").val();
+    var p2 = $("#password2").val();
+    if(p1 == "" || p1 == null || p2 == "" || p2 == null) return false;
+
+    if(p1 != p2)
+        return false;
+    else
+        return true;
 }
 
-// 校验失败函数
-function fail(Obj, counter, msg) {
-    Obj.parent().parent().removeClass('has-success').addClass('has-error');
-    $('.glyphicon-remove').eq(counter).show();
-    $('.glyphicon-ok').eq(counter).hide();
-    $('.tips').eq(counter).text(msg).show();
-    check[counter] = false;
-}
 
 function saveUserInfo() {
 
