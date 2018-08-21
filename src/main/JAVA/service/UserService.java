@@ -11,4 +11,6 @@ import pojo.Users;
  */
 public interface UserService {
     public Users getUserByID(long id);
+
+    public Users Login(String login, String pass);
 }

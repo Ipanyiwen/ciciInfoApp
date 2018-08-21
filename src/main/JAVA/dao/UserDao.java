@@ -1,5 +1,6 @@
 package dao;
 
+import org.apache.ibatis.annotations.Param;
 import pojo.Users;
 
 /**
@@ -12,4 +13,6 @@ import pojo.Users;
 public interface UserDao {
 
     public Users getUserByID(long id);
+
+    public Users getUserByLoginAndPass(@Param("Login") String login, @Param("Pass") String pass);
 }

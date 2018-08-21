@@ -19,4 +19,8 @@
         SELECT ID,userLogin,userNicename,userEmail,userRegistered,userStatus,displayName,pic FROM users WHERE ID = #{ID}
     </select>
 
+    <select id="getUserByLoginAndPass" resultMap="userMap">
+        SELECT ID,userLogin,userNicename,userEmail,userRegistered,userStatus,displayName,pic FROM users WHERE userLogin = #{Login} and userPass = #{Pass}
+    </select>
+
 </mapper>
