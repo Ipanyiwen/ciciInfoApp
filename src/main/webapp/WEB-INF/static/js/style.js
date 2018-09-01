@@ -21,6 +21,12 @@ $(function(){
  }, function(){
    qrImg.fadeOut();
  });
+
+ $(".search-btn").click(function () {
+    var text = $(".search-input").val();
+    if(text == null || text == "") return;
+    window.location.href="/tosearch?word="+text;
+ });
  
 });
 

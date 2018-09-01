@@ -42,6 +42,15 @@
         </init-param>
 
         <load-on-startup>2</load-on-startup>
+
+        <multipart-config>
+            <!-- 上传文件的大小限制，比如下面表示 20 M -->
+            <max-file-size>20971520</max-file-size>
+            <!-- 一次表单提交中文件的大小限制，必须下面代表 100 M -->
+            <max-request-size>104857600</max-request-size>
+            <!-- 多大的文件会被自动保存到硬盘上。0 代表所有 -->
+            <file-size-threshold>0</file-size-threshold>
+        </multipart-config>
     </servlet>
 
     <servlet-mapping>

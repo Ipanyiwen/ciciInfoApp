@@ -1,17 +1,16 @@
 package pojo;
 
 
-public class Comments {
+import java.io.Serializable;
+
+public class Comments implements Serializable{
+  private static final long serialVersionUID = 6973516510622581681L;
 
   private long commentId;
   private long commentPostId;
-  private String commentAuthor;
-  private String commentAuthorEmail;
   private java.sql.Timestamp commentDate;
   private String commentContent;
-  private String commentApproved;
-  private long commentType;
-  private String commentAuthorIp;
+  private boolean commentApproved;
   private long commentParent;
   private Users user;
 
@@ -33,25 +32,6 @@ public class Comments {
     this.commentPostId = commentPostId;
   }
 
-
-  public String getCommentAuthor() {
-    return commentAuthor;
-  }
-
-  public void setCommentAuthor(String commentAuthor) {
-    this.commentAuthor = commentAuthor;
-  }
-
-
-  public String getCommentAuthorEmail() {
-    return commentAuthorEmail;
-  }
-
-  public void setCommentAuthorEmail(String commentAuthorEmail) {
-    this.commentAuthorEmail = commentAuthorEmail;
-  }
-
-
   public java.sql.Timestamp getCommentDate() {
     return commentDate;
   }
@@ -70,32 +50,13 @@ public class Comments {
   }
 
 
-  public String getCommentApproved() {
+  public boolean getCommentApproved() {
     return commentApproved;
   }
 
-  public void setCommentApproved(String commentApproved) {
+  public void setCommentApproved(boolean commentApproved) {
     this.commentApproved = commentApproved;
   }
-
-
-  public long getCommentType() {
-    return commentType;
-  }
-
-  public void setCommentType(long commentType) {
-    this.commentType = commentType;
-  }
-
-
-  public String getCommentAuthorIp() {
-    return commentAuthorIp;
-  }
-
-  public void setCommentAuthorIp(String commentAuthorIp) {
-    this.commentAuthorIp = commentAuthorIp;
-  }
-
 
   public long getCommentParent() {
     return commentParent;
@@ -119,13 +80,9 @@ public class Comments {
     return "Comments{" +
             "commentId=" + commentId +
             ", commentPostId=" + commentPostId +
-            ", commentAuthor='" + commentAuthor + '\'' +
-            ", commentAuthorEmail='" + commentAuthorEmail + '\'' +
             ", commentDate=" + commentDate +
             ", commentContent='" + commentContent + '\'' +
             ", commentApproved='" + commentApproved + '\'' +
-            ", commentType=" + commentType +
-            ", commentAuthorIp='" + commentAuthorIp + '\'' +
             ", commentParent=" + commentParent +
             ", user=" + user +
             '}';

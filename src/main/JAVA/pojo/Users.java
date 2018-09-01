@@ -1,25 +1,55 @@
 package pojo;
 
 
-public class Users {
+import java.io.Serializable;
+import java.util.List;
 
-  private long ID;
+public class Users implements Serializable {
+
+  private static final long serialVersionUID = -326381772476438878L;
+  private Long ID;
   private String userLogin;
   private String userPass;
   private String userNicename;
   private String userEmail;
   private java.sql.Timestamp userRegistered;
   private long userStatus;
-  private String displayName;
+  private String signature;
   private String pic;
   private UserRank userRank;
+  private List<Terms> terms;
+  private List<Users> myAttentions;
+  private List<Users> myFans;
 
+  public List<Users> getMyAttentions() {
+    return myAttentions;
+  }
 
-  public long getID() {
+  public void setMyAttentions(List<Users> myAttentions) {
+    this.myAttentions = myAttentions;
+  }
+
+  public List<Users> getMyFans() {
+    return myFans;
+  }
+
+  public void setMyFans(List<Users> myFans) {
+    this.myFans = myFans;
+  }
+
+  public List<Terms> getTerms() {
+    return terms;
+  }
+
+  public void setTerms(List<Terms> terms) {
+    this.terms = terms;
+  }
+
+  public Long getID() {
     return ID;
   }
 
-  public void setID(long id) {
+  public void setID(Long id) {
     this.ID = id;
   }
 
@@ -78,14 +108,13 @@ public class Users {
   }
 
 
-  public String getDisplayName() {
-    return displayName;
+  public String getSignature() {
+    return signature;
   }
 
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
+  public void setSignature(String signature) {
+    this.signature = signature;
   }
-
 
   public String getPic() {
     return pic;
@@ -106,16 +135,17 @@ public class Users {
   @Override
   public String toString() {
     return "Users{" +
-            "id=" + ID +
+            "ID=" + ID +
             ", userLogin='" + userLogin + '\'' +
             ", userPass='" + userPass + '\'' +
             ", userNicename='" + userNicename + '\'' +
             ", userEmail='" + userEmail + '\'' +
             ", userRegistered=" + userRegistered +
             ", userStatus=" + userStatus +
-            ", displayName='" + displayName + '\'' +
+            ", signature='" + signature + '\'' +
             ", pic='" + pic + '\'' +
             ", userRank=" + userRank +
+            ", terms=" + terms +
             '}';
   }
 }

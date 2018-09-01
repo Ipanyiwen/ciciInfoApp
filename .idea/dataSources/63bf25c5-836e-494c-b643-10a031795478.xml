@@ -909,29 +909,32 @@
     <table id="228" parent="2" name="source">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="229" parent="2" name="termRelationships">
+    <table id="229" parent="2" name="tagsRelationships">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="230" parent="2" name="terms">
+    <table id="230" parent="2" name="termRelationships">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="231" parent="2" name="user_rank">
+    <table id="231" parent="2" name="terms">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="232" parent="2" name="user_relation">
+    <table id="232" parent="2" name="user_rank">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="233" parent="2" name="users">
+    <table id="233" parent="2" name="user_relation">
       <Engine>InnoDB</Engine>
     </table>
-    <column id="234" parent="226" name="commentId">
+    <table id="234" parent="2" name="users">
+      <Engine>InnoDB</Engine>
+    </table>
+    <column id="235" parent="226" name="commentId">
       <Position>1</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="235" parent="226" name="commentPostId">
+    <column id="236" parent="226" name="commentPostId">
       <Position>2</Position>
       <Comment>对应文章id</Comment>
       <DataType>bigint(20)|0</DataType>
@@ -939,95 +942,62 @@
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="236" parent="226" name="commentAuthor">
+    <column id="237" parent="226" name="commentDate">
       <Position>3</Position>
-      <Comment>评论者</Comment>
-      <DataType>tinytext|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="237" parent="226" name="commentAuthorEmail">
-      <Position>4</Position>
-      <DataType>varchar(100)|0</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="238" parent="226" name="commentDate">
-      <Position>5</Position>
       <DataType>datetime|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;2018-01-01 00:00:00&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="239" parent="226" name="commentContent">
-      <Position>6</Position>
+    <column id="238" parent="226" name="commentContent">
+      <Position>4</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="240" parent="226" name="commentApproved">
-      <Position>7</Position>
+    <column id="239" parent="226" name="commentApproved">
+      <Position>5</Position>
       <Comment>评论是否被允许</Comment>
-      <DataType>varchar(20)|0</DataType>
+      <DataType>tinyint(1)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="241" parent="226" name="commentType">
-      <Position>8</Position>
-      <Comment>评论类型 0博客, 1资源, 2资讯</Comment>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>&apos;0&apos;</DefaultExpression>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="242" parent="226" name="commentAuthorIP">
-      <Position>9</Position>
-      <Comment>评论者IP</Comment>
-      <DataType>char(20)|0</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="243" parent="226" name="commentParent">
-      <Position>10</Position>
+    <column id="240" parent="226" name="commentParent">
+      <Position>6</Position>
       <Comment>评论的父id</Comment>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="244" parent="226" name="userId">
-      <Position>11</Position>
+    <column id="241" parent="226" name="userId">
+      <Position>7</Position>
       <Comment>用户者用户id</Comment>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="245" parent="226" name="commentPostId">
+    <index id="242" parent="226" name="commentPostId">
       <ColNames>commentPostId</ColNames>
     </index>
-    <index id="246" parent="226" name="commentAuthorEmail">
-      <ColNames>commentAuthorEmail</ColNames>
-    </index>
-    <index id="247" parent="226" name="commentParent">
+    <index id="243" parent="226" name="commentParent">
       <ColNames>commentParent</ColNames>
     </index>
-    <key id="248" parent="226" name="PRIMARY">
+    <key id="244" parent="226" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>commentId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="249" parent="227" name="ID">
+    <column id="245" parent="227" name="ID">
       <Position>1</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="250" parent="227" name="postAuthor">
+    <column id="246" parent="227" name="postAuthor">
       <Position>2</Position>
       <Comment>作者</Comment>
       <DataType>bigint(20)|0</DataType>
@@ -1035,7 +1005,7 @@
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="251" parent="227" name="postDate">
+    <column id="247" parent="227" name="postDate">
       <Position>3</Position>
       <Comment>日期</Comment>
       <DataType>datetime|0</DataType>
@@ -1043,28 +1013,28 @@
       <DefaultExpression>&apos;2018-01-01 00:00:00&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="252" parent="227" name="postContent">
+    <column id="248" parent="227" name="postContent">
       <Position>4</Position>
       <Comment>正文</Comment>
       <DataType>longtext|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="253" parent="227" name="postTitle">
+    <column id="249" parent="227" name="postTitle">
       <Position>5</Position>
       <Comment>标题</Comment>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="254" parent="227" name="postExcerpt">
+    <column id="250" parent="227" name="postExcerpt">
       <Position>6</Position>
       <Comment>摘要</Comment>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="255" parent="227" name="postStatus">
+    <column id="251" parent="227" name="postStatus">
       <Position>7</Position>
       <Comment>文章状态 (publish/auto-draft)</Comment>
       <DataType>varchar(20)|0</DataType>
@@ -1072,7 +1042,7 @@
       <DefaultExpression>&apos;publish&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="256" parent="227" name="commentStatus">
+    <column id="252" parent="227" name="commentStatus">
       <Position>8</Position>
       <Comment>评论状态(open/close)</Comment>
       <DataType>varchar(20)|0</DataType>
@@ -1080,13 +1050,13 @@
       <DefaultExpression>&apos;open&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="257" parent="227" name="postPic">
+    <column id="253" parent="227" name="postPic">
       <Position>9</Position>
       <DataType>varchar(100)|0</DataType>
       <DefaultExpression>&apos;/image/default.png&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="258" parent="227" name="postModified">
+    <column id="254" parent="227" name="postModified">
       <Position>10</Position>
       <Comment>修改时间</Comment>
       <DataType>datetime|0</DataType>
@@ -1094,14 +1064,14 @@
       <DefaultExpression>&apos;2018-01-01 00:00:00&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="259" parent="227" name="postType">
+    <column id="255" parent="227" name="postType">
       <Position>11</Position>
-      <DataType>varchar(20)|0</DataType>
+      <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;post&apos;</DefaultExpression>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="260" parent="227" name="commentCount">
+    <column id="256" parent="227" name="commentCount">
       <Position>12</Position>
       <Comment>评论总数</Comment>
       <DataType>bigint(20)|0</DataType>
@@ -1109,31 +1079,31 @@
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="261" parent="227" name="postAuthor">
+    <index id="257" parent="227" name="postAuthor">
       <ColNames>postAuthor</ColNames>
     </index>
-    <index id="262" parent="227" name="postName">
+    <index id="258" parent="227" name="postName">
       <ColNames>postPic</ColNames>
     </index>
-    <index id="263" parent="227" name="typeStatusDate">
+    <index id="259" parent="227" name="typeStatusDate">
       <ColNames>postType
 postStatus
 postDate
 ID</ColNames>
     </index>
-    <key id="264" parent="227" name="PRIMARY">
+    <key id="260" parent="227" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="265" parent="228" name="ID">
+    <column id="261" parent="228" name="ID">
       <Position>1</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="266" parent="228" name="url">
+    <column id="262" parent="228" name="url">
       <Position>2</Position>
       <Comment>资源链接</Comment>
       <DataType>varchar(100)|0</DataType>
@@ -1141,7 +1111,7 @@ ID</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="267" parent="228" name="name">
+    <column id="263" parent="228" name="name">
       <Position>3</Position>
       <Comment>名称</Comment>
       <DataType>varchar(100)|0</DataType>
@@ -1149,14 +1119,14 @@ ID</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="268" parent="228" name="description">
+    <column id="264" parent="228" name="description">
       <Position>4</Position>
       <Comment>资源描述</Comment>
       <DataType>longtext|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="269" parent="228" name="termID">
+    <column id="265" parent="228" name="termID">
       <Position>5</Position>
       <Comment>类别ID</Comment>
       <DataType>bigint(20)|0</DataType>
@@ -1164,39 +1134,61 @@ ID</ColNames>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="270" parent="228" name="sourceExcerpt">
+    <column id="266" parent="228" name="sourceExcerpt">
       <Position>6</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="271" parent="228" name="sourceDate">
+    <column id="267" parent="228" name="sourceDate">
       <Position>7</Position>
       <DataType>datetime|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;2018-01-01 00:00:00&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="272" parent="228" name="sourceModified">
+    <column id="268" parent="228" name="sourceModified">
       <Position>8</Position>
       <DataType>datetime|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;2018-01-01 00:00:00&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="273" parent="228" name="commentCount">
+    <column id="269" parent="228" name="commentCount">
       <Position>9</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="274" parent="228" name="PRIMARY">
+    <key id="270" parent="228" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="275" parent="229" name="objectId">
+    <column id="271" parent="229" name="tid">
+      <Position>1</Position>
+      <Comment>标签id</Comment>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="272" parent="229" name="uid">
+      <Position>2</Position>
+      <Comment>用户id</Comment>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="273" parent="229" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>tid
+uid</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="274" parent="230" name="objectId">
       <Position>1</Position>
       <Comment>对应文章id</Comment>
       <DataType>bigint(20)|0</DataType>
@@ -1204,7 +1196,7 @@ ID</ColNames>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="276" parent="229" name="termTaxonomyId">
+    <column id="275" parent="230" name="termTaxonomyId">
       <Position>2</Position>
       <Comment>对应分类id</Comment>
       <DataType>bigint(20)|0</DataType>
@@ -1212,23 +1204,23 @@ ID</ColNames>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="277" parent="229" name="termTaxonomyId">
+    <index id="276" parent="230" name="termTaxonomyId">
       <ColNames>termTaxonomyId</ColNames>
     </index>
-    <key id="278" parent="229" name="PRIMARY">
+    <key id="277" parent="230" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>objectId
 termTaxonomyId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="279" parent="230" name="termId">
+    <column id="278" parent="231" name="termId">
       <Position>1</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="280" parent="230" name="name">
+    <column id="279" parent="231" name="name">
       <Position>2</Position>
       <Comment>分类名</Comment>
       <DataType>varchar(200)|0</DataType>
@@ -1236,7 +1228,7 @@ termTaxonomyId</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="281" parent="230" name="slug">
+    <column id="280" parent="231" name="slug">
       <Position>3</Position>
       <Comment>缩略名</Comment>
       <DataType>varchar(200)|0</DataType>
@@ -1244,15 +1236,15 @@ termTaxonomyId</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="282" parent="230" name="parent">
+    <column id="281" parent="231" name="type">
       <Position>4</Position>
-      <Comment>所属父方法id</Comment>
-      <DataType>bigint(20)|0</DataType>
+      <Comment>类别</Comment>
+      <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;-1&apos;</DefaultExpression>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="283" parent="230" name="count">
+    <column id="282" parent="231" name="count">
       <Position>5</Position>
       <Comment>方法下文章总数</Comment>
       <DataType>bigint(20)|0</DataType>
@@ -1260,7 +1252,7 @@ termTaxonomyId</ColNames>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="284" parent="230" name="termType">
+    <column id="283" parent="231" name="termType">
       <Position>6</Position>
       <Comment>类型 0博客, 1资源, 2资讯 </Comment>
       <DataType>int(11)|0</DataType>
@@ -1268,32 +1260,32 @@ termTaxonomyId</ColNames>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="285" parent="230" name="name">
+    <index id="284" parent="231" name="name">
       <ColNames>name</ColNames>
     </index>
-    <index id="286" parent="230" name="slug">
+    <index id="285" parent="231" name="slug">
       <ColNames>slug</ColNames>
     </index>
-    <key id="287" parent="230" name="PRIMARY">
+    <key id="286" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>termId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="288" parent="231" name="rankID">
+    <column id="287" parent="232" name="rankID">
       <Position>1</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="289" parent="231" name="userID">
+    <column id="288" parent="232" name="userID">
       <Position>2</Position>
       <Comment>用户ID</Comment>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="290" parent="231" name="source">
+    <column id="289" parent="232" name="source">
       <Position>3</Position>
       <Comment>积分</Comment>
       <DataType>bigint(20)|0</DataType>
@@ -1301,7 +1293,7 @@ termTaxonomyId</ColNames>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="291" parent="231" name="rankName">
+    <column id="290" parent="232" name="rankName">
       <Position>4</Position>
       <Comment>等级名称</Comment>
       <DataType>varchar(100)|0</DataType>
@@ -1309,39 +1301,39 @@ termTaxonomyId</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="292" parent="231" name="PRIMARY">
+    <key id="291" parent="232" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>rankID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="293" parent="232" name="userID">
+    <column id="292" parent="233" name="userID">
       <Position>1</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="294" parent="232" name="friendID">
+    <column id="293" parent="233" name="friendID">
       <Position>2</Position>
       <Comment>用户ID</Comment>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="295" parent="232" name="PRIMARY">
+    <key id="294" parent="233" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>userID
 friendID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="296" parent="233" name="ID">
+    <column id="295" parent="234" name="ID">
       <Position>1</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="297" parent="233" name="userLogin">
+    <column id="296" parent="234" name="userLogin">
       <Position>2</Position>
       <Comment>帐号</Comment>
       <DataType>varchar(60)|0</DataType>
@@ -1349,7 +1341,7 @@ friendID</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="298" parent="233" name="userPass">
+    <column id="297" parent="234" name="userPass">
       <Position>3</Position>
       <Comment>密码</Comment>
       <DataType>varchar(255)|0</DataType>
@@ -1357,7 +1349,7 @@ friendID</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="299" parent="233" name="userNicename">
+    <column id="298" parent="234" name="userNicename">
       <Position>4</Position>
       <Comment>昵称</Comment>
       <DataType>varchar(50)|0</DataType>
@@ -1365,7 +1357,7 @@ friendID</ColNames>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="300" parent="233" name="userEmail">
+    <column id="299" parent="234" name="userEmail">
       <Position>5</Position>
       <Comment>邮箱</Comment>
       <DataType>varchar(100)|0</DataType>
@@ -1373,7 +1365,7 @@ friendID</ColNames>
       <DefaultExpression>&apos;example@email.com&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="301" parent="233" name="userRegistered">
+    <column id="300" parent="234" name="userRegistered">
       <Position>6</Position>
       <Comment>注册时间</Comment>
       <DataType>datetime|0</DataType>
@@ -1381,7 +1373,7 @@ friendID</ColNames>
       <DefaultExpression>&apos;2018-01-01 00:00:00&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="302" parent="233" name="userStatus">
+    <column id="301" parent="234" name="userStatus">
       <Position>7</Position>
       <Comment>用户状态</Comment>
       <DataType>int(11)|0</DataType>
@@ -1389,30 +1381,27 @@ friendID</ColNames>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="303" parent="233" name="displayName">
+    <column id="302" parent="234" name="signature">
       <Position>8</Position>
-      <Comment>显示名称</Comment>
       <DataType>varchar(250)|0</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>&apos;&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="304" parent="233" name="pic">
+    <column id="303" parent="234" name="pic">
       <Position>9</Position>
       <DataType>varchar(50)|0</DataType>
       <DefaultExpression>&apos;/photo/default.png&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="305" parent="233" name="userLoginKey">
+    <index id="304" parent="234" name="userLoginKey">
       <ColNames>userLogin</ColNames>
     </index>
-    <index id="306" parent="233" name="userNicename">
+    <index id="305" parent="234" name="userNicename">
       <ColNames>userNicename</ColNames>
     </index>
-    <index id="307" parent="233" name="userEmail">
+    <index id="306" parent="234" name="userEmail">
       <ColNames>userEmail</ColNames>
     </index>
-    <key id="308" parent="233" name="PRIMARY">
+    <key id="307" parent="234" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>

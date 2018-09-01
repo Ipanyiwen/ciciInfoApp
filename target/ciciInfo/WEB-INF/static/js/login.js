@@ -39,20 +39,32 @@ $(document).ready(function () {
         $("#password").val("****************");
     }
 
+    $("#uid").blur(function () {
+
+        var uid = $("#uid").val();
+        $.ajax({
+            method:"post",
+            data: {"uid": uid},
+            url:"/checkuid",
+            success: function (result) {
+                if(result != "OK"){
+                    $("#uidmsg").show();
+                    $("#uid").focus();
+                }else {
+                    $("#uidmsg").hide();
+                }
+            }
+        });
+    });
+
     $("#reg-form").ajaxForm(function (data) {
         alert(data['msg']);
         window.location.href="index";
     });
     
-    $("#reg-form").submit(function () {
-        if(!checkPassword())
-            return false;
-        else{
-            var passwd = $.md5($.md5($("#password1").val()));
-            $("#rpasswd").val(passwd);
-            return true;
-        }
-    })
+    // $("#reg-form").onsubmit(function () {
+    //
+    // })
 
 
     $('#login').click(function (e) {
@@ -82,16 +94,19 @@ $(document).ready(function () {
             data: {'username': $("#username").val(), 'password': $("#password").val()},
             success: function (data) {
                 if(data["msg"] == "success"){
+
                     $('#errmsg').hide();
-                    k && (k = !1, $("#loginalert").animate({top: -600}, 400, "easeOutQuart", function () {
+                    k && (k = !1, $("#loginalert").animate({top: -600}, 1, "easeOutQuart", function () {
                         $("#loginalert").hide();
                         k = !0
-                    }), $(".loginmask").fadeOut(500))
+                    }), $(".loginmask").fadeOut(1))
+                    location.reload();
 
-                    $("#plogin").hide();
-                    $("#userinfo").show();
 
-                    $("#user-photo").src=data["user"]["pic"];
+                    // $("#plogin").hide();
+                    // $("#userinfo").show();
+                    // $("#user-photo").src=data["user"]["pic"];
+
                     //alert(data["user"]["userLogin"]);
                 }else{
                     $('#errmsg').show();
@@ -108,7 +123,15 @@ $(document).ready(function () {
 
 });
 
-
+function doregister() {
+    if(!checkPassword())
+        return false;
+    else{
+        var passwd = $.md5($.md5($("#password1").val()));
+        $("#rpasswd").val(passwd);
+        return true;
+    }
+}
 
 function checkPassword(){
     var p1 = $("#password1").val();

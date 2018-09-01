@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.TermsDao">
+    <resultMap id="termMap" type="pojo.Terms">
+
+        <id property="termId" column="termId"></id>
+        <result property="name" column="name"></result>
+        <result property="slug" column="slug"></result>
+        <result property="type" column="type"></result>
+        <result property="count" column="count"></result>
+        <result property="termType" column="termType"></result>
+        <collection property="posts" column="ID" select="dao.PostDao.getPostById">
+        </collection>
+
+    </resultMap>
+
+    <select id="getTermsByID" parameterType="long" resultMap="termMap">
+        SELECT t.termId, t.name, t.slug, t.type, t.count, t.termType,
+        p.ID, p.postAuthor, p.postDate, p.postContent, p.postTitle,
+        p.postExcerpt, p.postStatus, p.commentStatus,
+        p.postPic, p.postModified, p.postType, p.commentCount
+        from posts as p, terms as t, termRelationships as r
+        where p.ID = r.objectId and r.termTaxonomyId = t.termId and t.termId = #{id}
+    </select>
+
+    <select id="getTermsNameByID" resultType="pojo.Terms">
+        select termId, name, slug, type, count, termType from terms WHERE termId = #{tid}
+    </select>
+
+    <select id="getTermsByType" parameterType="int" resultType="pojo.Terms">
+        select termId, name, slug, type, count, termType from terms WHERE termType = #{termType} and type = 0;
+    </select>
+    
+    <select id="getTagByName" resultType="pojo.Terms">
+      select t.termId, t.name, t.slug, t.type, t.count, t.termType from terms as t, tagsRelationships as r WHERE name = #{name} and t.termId=r.tid and r.uid = #{uid} and t.type = 1;
+    </select>
+    
+    <select id="listTermsByUid" parameterType="long" resultType="pojo.Terms">
+        select t.termId, t.name from terms as t, tagsRelationships as r
+        WHERE t.termId=r.tid
+            <if test="uid != -1">
+              and r.uid = #{uid}
+            </if>
+            and t.type = 1 order by count desc limit 0, 50
+
+    </select>
+
+    <insert id="saveTerms" parameterType="pojo.Terms">
+        <selectKey resultType="long" order="AFTER" keyProperty="termId">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO terms(name, slug, type, count, termType)
+        VALUES (#{name}, #{slug}, #{type}, #{count}, #{termType})
+    </insert>
+
+    <update id="updatePostNums" parameterType="long">
+        UPDATE terms set count = count + #{nums} WHERE termId = #{tid};
+    </update>
+    
+    <update id="updateTermsCount">
+        UPDATE terms SET count = count - 1 where termId in (SELECT termTaxonomyId from termRelationships WHERE  objectId = #{pid})
+    </update>
+    
+    <delete id="deleteTermRealationByPid">
+        DELETE FROM termRelationships WHERE objectId = #{pid}
+    </delete>
+
+    <select id="getTermByPid" resultType="pojo.Terms">
+        SELECT t.termId, t.name, t.slug, t.type, t.count, t.termType
+        FROM termRelationships as r, terms as t
+        WHERE r.objectId = #{pid} and t.termId = r.termTaxonomyId and t.type = 0
+    </select>
+
+    <select id="listtagsByPid" resultType="pojo.Terms">
+        SELECT t.termId, t.name, t.slug, t.type, t.count, t.termType
+        FROM termRelationships as r, terms as t
+        WHERE r.objectId = #{pid} and t.termId = r.termTaxonomyId and t.type = 1
+    </select>
+
+
+</mapper>

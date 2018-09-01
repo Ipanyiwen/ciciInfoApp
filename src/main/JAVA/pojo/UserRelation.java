@@ -1,8 +1,11 @@
 package pojo;
 
 
-public class UserRelation {
+import java.io.Serializable;
 
+public class UserRelation implements Serializable{
+
+  private static final long serialVersionUID = -8681192268051422413L;
   private long userId;
   private long friendId;
 

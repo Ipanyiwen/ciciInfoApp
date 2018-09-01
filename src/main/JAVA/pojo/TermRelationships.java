@@ -1,8 +1,11 @@
 package pojo;
 
 
-public class TermRelationships {
+import java.io.Serializable;
 
+public class TermRelationships implements Serializable {
+
+  private static final long serialVersionUID = -2738835704905566248L;
   private long objectId;
   private long termTaxonomyId;
 

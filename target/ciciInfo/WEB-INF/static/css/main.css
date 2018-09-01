@@ -711,6 +711,17 @@ body {
 	padding-left: 61px;
 	position: relative;
 }
+
+.pagetitle h1 {
+	font-size: 24px;
+	color: #fff;
+	font-weight: 800;
+	height: 52px;
+	line-height: 53px;
+	background: #272728 url(../images/titlebg_6e57154.jpg) no-repeat right;
+	padding-left: 61px;
+	position: relative;
+}
 .pagetitle h1 .itag {
 	position: absolute;
 	top: 14px;

@@ -9,8 +9,8 @@
         <module name="ciciInfo" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="ciciInfo" target="1.7" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="ciciInfo" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

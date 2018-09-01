@@ -8,19 +8,47 @@
         <result property="userEmail" column="userEmail"></result>
         <result property="userRegistered" column="userRegistered"></result>
         <result property="userStatus" column="userStatus"></result>
-        <result property="displayName" column="displayName"></result>
+        <result property="signature" column="signature"></result>
         <result property="pic" column="pic"></result>
 
         <association property="userRank" column="ID" select="dao.UserRankDao.getUserRankByID">
         </association>
+
+        <collection property="myAttentions" column="ID" select="dao.UserRelationDao.listAttentionByID"></collection>
+
+        <collection property="myFans" column="ID" select="dao.UserRelationDao.listFansByID"></collection>
     </resultMap>
 
     <select id="getUserByID" parameterType="Long" resultMap="userMap">
-        SELECT ID,userLogin,userNicename,userEmail,userRegistered,userStatus,displayName,pic FROM users WHERE ID = #{ID}
+        SELECT ID,userLogin,userNicename,userEmail,userRegistered,userStatus,signature,pic FROM users WHERE ID = #{ID}
+    </select>
+
+    <select id="getUserLogin" parameterType="string" resultType="boolean">
+        SELECT count(ID) FROM users WHERE userLogin = #{login}
     </select>
 
     <select id="getUserByLoginAndPass" resultMap="userMap">
-        SELECT ID,userLogin,userNicename,userEmail,userRegistered,userStatus,displayName,pic FROM users WHERE userLogin = #{Login} and userPass = #{Pass}
+        SELECT ID,userLogin,userNicename,userEmail,userRegistered,userStatus,signature,pic FROM users WHERE userLogin = #{Login} and userPass = #{Pass}
     </select>
+
+    <insert id="saveUser" parameterType="pojo.Users">
+        <selectKey keyProperty="ID" resultType="integer" order="AFTER">
+            SELECT LAST_INSERT_ID();
+        </selectKey>
+        INSERT INTO users(userLogin, userPass, userNicename, userEmail, userRegistered) VALUES (#{userLogin}, #{userPass}, #{userNicename}, #{userEmail}, #{userRegistered})
+    </insert>
+
+    <update id="updateUser" parameterType="pojo.Users">
+        UPDATE users set userNicename=#{userNicename}, userEmail=#{userEmail}, signature=#{signature}
+         WHERE ID=#{ID}
+    </update>
+
+    <update id="updatePhoto">
+        UPDATE users set pic=#{photo} WHERE ID=#{ID}
+    </update>
+
+    <update id="updatePass" parameterType="string">
+        UPDATE users set userPass = #{newPass} WHERE userLogin=#{userLogin} AND userPass=#{oldPass}
+    </update>
 
 </mapper>

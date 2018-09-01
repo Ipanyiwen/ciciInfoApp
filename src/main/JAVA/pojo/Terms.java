@@ -1,15 +1,29 @@
 package pojo;
 
 
-public class Terms {
+import com.sun.org.apache.xpath.internal.SourceTree;
 
+import java.io.Serializable;
+import java.util.List;
+
+public class Terms implements Serializable{
+
+  private static final long serialVersionUID = 348921708415231193L;
   private long termId;
   private String name;
   private String slug;
-  private long parent;
+  private int type;
   private long count;
   private long termType;
+  private List<Posts> posts;
 
+  public List<Posts> getPosts() {
+    return posts;
+  }
+
+  public void setPosts(List<Posts> posts) {
+    this.posts = posts;
+  }
 
   public long getTermId() {
     return termId;
@@ -38,12 +52,12 @@ public class Terms {
   }
 
 
-  public long getParent() {
-    return parent;
+  public long getType() {
+    return type;
   }
 
-  public void setParent(long parent) {
-    this.parent = parent;
+  public void setType(int type) {
+    this.type = type;
   }
 
 
@@ -64,4 +78,15 @@ public class Terms {
     this.termType = termType;
   }
 
+  @Override
+  public String toString() {
+    return "Terms{" +
+            "termId=" + termId +
+            ", name='" + name + '\'' +
+            ", slug='" + slug + '\'' +
+            ", type=" + type +
+            ", count=" + count +
+            ", termType=" + termType +
+            '}';
+  }
 }

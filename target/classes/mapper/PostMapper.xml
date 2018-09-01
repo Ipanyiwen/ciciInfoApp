@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.PostDao">
+    <resultMap id="postMap" type="pojo.Posts">
+        <id property="ID" column="ID"></id>
+        <result property="postDate" column="postDate"></result>
+        <result property="postContent" column="postContent"></result>
+        <result property="postTitle" column="postTitle"></result>
+        <result property="postExcerpt" column="postExcerpt"></result>
+        <result property="postStatus" column="postStatus"></result>
+        <result property="postPic" column="postPic"></result>
+        <result property="postModified" column="postModified"></result>
+        <result property="postType" column="postType"></result>
+        <result property="commentCount" column="commentCount"></result>
+
+        <association property="Author" column="postAuthor" select="dao.UserDao.getUserByID"></association>
+        <association property="term" column="ID" select="dao.TermsDao.getTermByPid"></association>
+        <collection property="tags" column="ID" select="dao.TermsDao.listtagsByPid"></collection>
+        <collection property="comments" column="ID" select="dao.CommentDao.listCommentsByPid"></collection>
+    </resultMap>
+
+    <select id="getPostById" parameterType="long" resultMap="postMap">
+        SELECT ID, postAuthor, postDate, postContent, postTitle,
+        postExcerpt, postStatus, commentStatus,
+        postPic, postModified, postType, commentCount
+        from posts where ID = #{ID}
+    </select>
+
+
+
+    <insert id="savePost" parameterType="pojo.Posts">
+        <selectKey resultType="long" order="AFTER" keyProperty="ID">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO posts (postAuthor, postDate, postContent, postTitle, postExcerpt, postStatus, commentStatus, postPic, postModified, postType)
+        values(#{Author.ID}, #{postDate}, #{postContent}, #{postTitle}, #{postExcerpt}, #{postStatus}, #{commentStatus}, #{postPic}, #{postModified}, #{postType})
+    </insert>
+    
+    <insert id="savePostRealation">
+        INSERT INTO termRelationships(objectId, termTaxonomyId) VALUES (#{pid}, #{tid});
+    </insert>
+
+    <delete id="removePostRealtion">
+        DELETE FROM termRelationships WHERE termTaxonomyId=#{tid} and objectId =#{pid}
+    </delete>
+
+    <insert id="saveTagsRelation">
+        INSERT INTO tagsRelationships(tid, uid) VALUES (#{tid}, #{uid});
+    </insert>
+
+    <update id="updatePost" parameterType="pojo.Posts">
+        UPDATE posts SET postContent=#{postContent}, postTitle=#{postTitle},
+        postExcerpt=#{postExcerpt},postStatus=#{postStatus}, commentStatus=#{commentStatus},
+        postPic=#{postPic}, postModified=#{postModified}, postType=#{postType}
+        WHERE ID = #{ID}
+    </update>
+
+    <select id="listPostsByUid" resultType="pojo.Posts">
+        select ID, postDate, postContent, postTitle, postExcerpt, postStatus, commentStatus, postPic, postModified, postType from posts
+        <where>
+            <if test="uid != -1">
+                postAuthor = #{uid}
+            </if>
+            and postStatus = "publish"
+        </where>
+    </select>
+
+    <select id="listPosts" resultMap="postMap">
+        select ID, postAuthor, postDate, postContent, postTitle, postExcerpt, postStatus, commentStatus, postPic, postModified, postType from posts WHERE postStatus = "publish"
+    </select>
+
+    <select id="listPostsBytid" resultMap="postMap">
+        select p.ID, p.postAuthor, p.postDate, p.postContent, p.postTitle, p.postExcerpt, p.postStatus, p.commentStatus, p.postPic, p.postModified, p.postType
+        from posts as p, termRelationships as r
+        where r.objectId=p.ID and r.termTaxonomyId = #{tid} and p.postStatus = "publish"
+    </select>
+
+    <select id="listPostsByPosttype" resultMap="postMap">
+        SELECT ID, postAuthor, postDate, postContent, postTitle, postExcerpt, postStatus, commentStatus, postPic, postModified, postType from posts
+        WHERE  postType = #{type} and postStatus = "publish"
+    </select>
+
+    <select id="listpostsByuidAndType" resultMap="postMap">
+        SELECT ID, postAuthor, postDate, postContent, postTitle, postExcerpt, postStatus, commentStatus, postPic, postModified, postType from posts
+        WHERE  postAuthor = #{uid} and postType = #{type} and postStatus = "publish"
+    </select>
+
+    <delete id="delPostsByPid" parameterType="long">
+        DELETE FROM posts WHERE ID = #{pid}
+    </delete>
+
+    <delete id="delPostRelation">
+        DELETE FROM termRelationships WHERE objectId = #{pid} and termTaxonomyId = #{tid}
+    </delete>
+    
+    <update id="updatePostCommentNum">
+        UPDATE posts set commentCount = commentCount + #{num} WHERE ID = #{pid}
+    </update>
+
+    <select id="getPostNumsByUid" resultType="long">
+        select count(0) from posts WHERE postAuthor = #{uid} and postStatus = "publish"
+    </select>
+    
+    <select id="listPostsBywords" resultMap="postMap">
+      SELECT p.ID, p.postAuthor, p.postDate, p.postTitle, p.postExcerpt, p.postStatus, p.commentStatus, p.postPic, p.postModified, p.postType from posts as p, users as u
+      WHERE p.postAuthor = u.ID and (p.postTitle LIKE concat('%',#{word},'%') or u.userNicename LIKE concat('%',#{word},'%'))
+    </select>
+</mapper>
